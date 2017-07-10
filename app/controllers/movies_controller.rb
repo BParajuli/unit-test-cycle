@@ -54,6 +54,14 @@ class MoviesController < ApplicationController
     redirect_to movie_path(@movie)
   end
 
+  def same_director
+    @movie = Movie.find(params[:id])
+    director = @movie.director
+    @movies = Movie.where(Director: director)
+    
+
+  end
+  
   def destroy
     @movie = Movie.find(params[:id])
     @movie.destroy
